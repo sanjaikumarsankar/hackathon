@@ -1,8 +1,10 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule, APP_INITIALIZER  } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
+import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './hackathon/home/home.component';
@@ -10,6 +12,11 @@ import { IdeasComponent } from './hackathon/ideas/ideas.component';
 import { NewsComponent } from './hackathon/news/news.component';
 import { HackersComponent } from './hackathon/hackers/hackers.component';
 import { AdminComponent } from './hackathon/admin/admin.component';
+
+
+import { NavigationComponent } from './shared/navigation/navigation.component';
+import { VideoComponent } from './shared/video/video.component';
+
 import { AppRoutingModule } from './hackathon/app.routing.module';
 import { LoginComponent } from './hackathon/login/login.component';
 import { SignInComponent } from './hackathon/login/sign-in/sign-in.component';
@@ -17,24 +24,28 @@ import { SignUpComponent } from './hackathon/login/sign-up/sign-up.component';
 import { HackathonStoreModule } from './store/hackathon.store.module';
 import { startupServiceFactory } from './store/services/startup.service';
 import { CmsStateService } from './store/services/cms-state.service';
-import { AppNavigationComponent } from './shared/app-navigation/app-navigation.component';
-import { AppVideoComponent } from './shared/app-video/app-video.component';
-import { AppVideoDetailsComponent } from './shared/app-video-details/app-video-details.component';
-import { AppHackathonBannerComponent } from './shared/app-hackathon-banner/app-hackathon-banner.component';
-import { AppHackathonBannerDetailsComponent } from './shared/app-hackathon-banner-details/app-hackathon-banner-details.component';
-import { AppLiveFeedComponent } from './shared/app-live-feed/app-live-feed.component';
-import { AppLiveFeedDetailsComponent } from './shared/app-live-feed-details/app-live-feed-details.component';
-import { AppPanelExpandComponent } from './shared/app-panel-expand/app-panel-expand.component';
-import { AppPanelPaginationComponent } from './shared/app-panel-pagination/app-panel-pagination.component';
-import { AppAwaitingIdeasListComponent } from './shared/app-awaiting-ideas-list/app-awaiting-ideas-list.component';
-import { AppMasterListComponent } from './shared/app-master-list/app-master-list.component';
-import { AppPublishListComponent } from './shared/app-publish-list/app-publish-list.component';
-import { AppPublishFormComponent } from './shared/app-publish-form/app-publish-form.component';
-import { AppIdeaFormComponent } from './shared/app-idea-form/app-idea-form.component';
-import { AppHackerTeamInvitationComponent } from './shared/app-hacker-team-invitation/app-hacker-team-invitation.component';
-import { AppHackerInvitationComponent } from './shared/app-hacker-invitation/app-hacker-invitation.component';
-import { AppSearchListComponent } from './shared/app-search-list/app-search-list.component';
-import { AppSearchDisplayComponent } from './shared/app-search-display/app-search-display.component';
+import { AdminStateService } from './store/services/admin-state.service';
+import { HackerStateService } from './store/services/hacker-state.service';
+import { IdeaStateService } from './store/services/idea-state.service';
+import { LoginStateService } from './store/services/login-state.service';
+import { NewsStateService } from './store/services/news-state.service';
+import { VideoDetailsComponent } from './shared/video-details/video-details.component';
+import { LiveFeedComponent } from './shared/live-feed/live-feed.component';
+import { LiveFeedDetailsComponent } from './shared/live-feed-details/live-feed-details.component';
+import { HackathonBannerComponent } from './shared/hackathon-banner/hackathon-banner.component';
+import { HackathonBannerDetailsComponent } from './shared/hackathon-banner-details/hackathon-banner-details.component';
+import { IdeaFormComponent } from './shared/idea-form/idea-form.component';
+import { HackerInvitationComponent } from './shared/hacker-invitation/hacker-invitation.component';
+import { HackerTeamInvitationComponent } from './shared/hacker-team-invitation/hacker-team-invitation.component';
+import { InvitationFromTeamComponent } from './hackathon/hackers/invitation-from-team/invitation-from-team.component';
+import { InvitationToTeamComponent } from './hackathon/hackers/invitation-to-team/invitation-to-team.component';
+import { InvitationToHackerComponent } from './hackathon/hackers/invitation-to-hacker/invitation-to-hacker.component';
+import { InvitationFromHackerComponent } from './hackathon/hackers/invitation-from-hacker/invitation-from-hacker.component';
+import { ProfileComponent } from './hackathon/hackers/profile/profile.component';
+import { IdeaApprovalComponent } from './hackathon/admin/idea-approval/idea-approval.component';
+import { LogsComponent } from './hackathon/admin/logs/logs.component';
+import { PublishNewsComponent } from './hackathon/admin/publish-news/publish-news.component';
+import { HttpModule } from '@angular/http';
 
 export function instrumentOptions() {
   return {
@@ -53,34 +64,42 @@ export function instrumentOptions() {
     HackersComponent,
     AdminComponent,
     LoginComponent,
-    AppNavigationComponent,
-    AppVideoComponent,
-    AppVideoDetailsComponent,
-    AppHackathonBannerComponent,
-    AppHackathonBannerDetailsComponent,
-    AppLiveFeedComponent,
-    AppLiveFeedDetailsComponent,
-    AppPanelExpandComponent,
-    AppPanelPaginationComponent,
-    AppAwaitingIdeasListComponent,
-    AppMasterListComponent,
-    AppPublishListComponent,
-    AppPublishFormComponent,
-    AppIdeaFormComponent,
-    AppHackerTeamInvitationComponent,
-    AppHackerInvitationComponent,
-    AppSearchListComponent,
-    AppSearchDisplayComponent
+    NavigationComponent,
+    VideoComponent,
+    VideoDetailsComponent,
+    LiveFeedComponent,
+    LiveFeedDetailsComponent,
+    HackathonBannerComponent,
+    HackathonBannerDetailsComponent,
+    IdeaFormComponent,
+    HackerInvitationComponent,
+    HackerTeamInvitationComponent,
+    InvitationFromTeamComponent,
+    InvitationToTeamComponent,
+    InvitationToHackerComponent,
+    InvitationFromHackerComponent,
+    ProfileComponent,
+    IdeaApprovalComponent,
+    LogsComponent,
+    PublishNewsComponent
   ],
   imports: [
     StoreDevtoolsModule.instrument(instrumentOptions),
     StoreLogMonitorModule,
     HackathonStoreModule.forRoot(),
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    AngularFontAwesomeModule,
+    AppRoutingModule,
+    HttpModule
   ],
   providers: [
     CmsStateService,
+    AdminStateService,
+    HackerStateService,
+    IdeaStateService,
+    LoginStateService,
+    NewsStateService,
     {
       // Provider for APP_INITIALIZER
       provide: APP_INITIALIZER,
