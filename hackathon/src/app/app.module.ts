@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
 import { StoreLogMonitorModule, useLogMonitor } from '@ngrx/store-log-monitor';
-import { AngularFontAwesomeModule } from 'angular-font-awesome';
 
 import { AppComponent } from './app.component';
 import { HomeComponent } from './hackathon/home/home.component';
@@ -89,7 +88,6 @@ export function instrumentOptions() {
     HackathonStoreModule.forRoot(),
     BrowserModule,
     FormsModule,
-    AngularFontAwesomeModule,
     AppRoutingModule,
     HttpModule
   ],
