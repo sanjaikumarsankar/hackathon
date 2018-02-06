@@ -1,3 +1,27 @@
-<p>
-  search-list works!
-</p>
+<div class="col-md-12 margin-top">
+  <section>
+    <div class="content ">
+      <div class="primary-button card-deck mb-3 text-center">
+
+        <table class="table table-bordered">
+          <thead class="tble-hd" style="background-color: 1px solid #66b0de">
+            <tr>
+              <th>Idea Name</th>
+              <th>Team Name</th>
+              <th>Description</th>
+              <th>Status</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let idea of ideaDetails?.hackerIdea?.ideas"> 
+              <td class="td-ideas">{{idea.title}}</td>
+              <td class="td-ideas">{{idea.teamName}}</td>
+              <td class="td-ideas" [innerHtml]="idea.description"></td>
+              <td class="td-ideas">{{idea.status}}</td>
+            </tr>
+          </tbody>
+        </table>  
+      </div>
+    </div>
+  </section>
+  </div>
